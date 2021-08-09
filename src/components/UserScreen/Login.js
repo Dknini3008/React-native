@@ -72,9 +72,9 @@ class Login extends React.Component {
     };
 
     render() {
-        const { isPasswordVisible, loading, error, user } = this.state;
+        const { isPasswordVisible, loading, error} = this.state;
 
-        if (loading === true && !user) {
+        if (loading === true) {
             return <Loader />
         }
 
@@ -88,7 +88,7 @@ class Login extends React.Component {
                             {error ? (
                                 <View style={styles.errorContainer}>
                                     <Text style={styles.errorMsg}>
-                                        {'Invalid username or Pasword'}
+                                        {error}
                                     </Text>
                                 </View>
                             ) : null}

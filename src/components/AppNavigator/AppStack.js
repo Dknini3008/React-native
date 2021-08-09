@@ -3,6 +3,7 @@ import {
     createStackNavigator,
 } from '@react-navigation/stack';
 import BadgesTabNavigator from '../BadgesScreen/BadgesTabNavigator';
+import BadgeLanding from '../BadgesLanding/BadgeLanding'
 import Login from '../UserScreen/Login';
 import Colors from '../../res/Colors';
 import Signup from '../UserScreen/Signup';
@@ -24,6 +25,11 @@ const AppStack = () => {
                 headerTintColor: Colors.white,
             }}
         >
+            <Stack.Screen 
+                name='Landing' 
+                component={BadgeLanding} 
+                options={{ headerShown: false }} 
+            />
             <Stack.Screen
                 name="Login"
                 component={Login}

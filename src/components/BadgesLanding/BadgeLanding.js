@@ -15,9 +15,14 @@ const imageBackground = {
 
 class BadgeLanding extends React.Component {
 
-    //handle press to go to the tab navigator
+    //handle press to go to the login
     handlePress = () => {
         this.props.navigation.replace('BadgesTabNavigator');
+    };
+
+    // Login button handle
+    handleFinalOption = () => {
+        this.props.navigation.replace('Login');
     };
 
     render() {
@@ -30,7 +35,10 @@ class BadgeLanding extends React.Component {
                             Welcome {'\n'}to my {'\n'}binnacle
                         </Text>
                         <TouchableOpacity style={styles.button} onPress={this.handlePress}>
-                            <Text style={styles.buttonText}>Start</Text>
+                            <Text style={styles.buttonText}>Badges</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity style={styles.button} onPress={this.handleFinalOption}>
+                            <Text style={styles.buttonText}>Login</Text>
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>

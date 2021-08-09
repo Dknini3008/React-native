@@ -3,6 +3,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 class Storage {
     static instance = new Storage();
 
+    //Here we get the store data from user
     store = async (key, value) => {
         try {
             await AsyncStorage.setItem(key, value);
@@ -13,6 +14,7 @@ class Storage {
         }
     };
 
+    //here we get the items
     get = async key => {
         console.log(key);
         try {
@@ -23,6 +25,7 @@ class Storage {
         }
     };
 
+    //we get many keys in a function
     multiGet = async keys => {
         try {
             return await AsyncStorage.multiGet(keys);
@@ -32,6 +35,18 @@ class Storage {
         }
     };
 
+    //here we remove many keys with the function
+    multiRemove = async keys => {
+        try {
+            await AsyncStorage.multiRemove(keys);
+            return true;
+        } catch (err) {
+            console.log('Multi remove err', err);
+            return false;
+        }
+    };
+
+    //here we call all the keys
     getAllKeys = async () => {
         try {
             return await AsyncStorage.getAllKeys();
@@ -41,6 +56,7 @@ class Storage {
         }
     };
 
+    //this is to remove a key
     remove = async key => {
         try {
             await AsyncStorage.removeItem(key);

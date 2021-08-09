@@ -95,7 +95,7 @@ class UserSession {
     //Here we can edit the user
     editProfile = async (id, token, body) => {
         let uploadData = new FormData()
-        uploadData.append('profile.profile_pic', {
+        uploadData.append('profile.profile_picture_url', {
             type: 'image/jpg',
             uri: body,
             name: 'profile.jpg'

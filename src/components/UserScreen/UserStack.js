@@ -1,5 +1,5 @@
 import React from 'react';
-import {createStackNavigator} from '@react-navigation/stack';
+import { createStackNavigator } from '@react-navigation/stack';
 import ProfileEdit from './ProfileEdit'
 import Profile from './Profile';
 import Colors from '../../res/Colors';
@@ -17,17 +17,17 @@ const UserStack = () => {
                 },
                 headerTintColor: Colors.white,
             }}>
-                <Stack.Screen 
-                    name="Profile"
-                    component={Profile}
-                    options={{headerShown: false}}
-                />
-                <Stack.Screen 
-                    name="ProfileEdit"
-                    component={ProfileEdit}
-                    options={{headerShown: false}}
-                />
-            </Stack.Navigator>
+            <Stack.Screen
+                name="Profile"
+                component={Profile}
+                options={{ headerShown: false }}
+            />
+            <Stack.Screen
+                name="ProfileEdit"
+                component={ProfileEdit}
+                options={{ headerShown: false }}
+            />
+        </Stack.Navigator>
     );
 };
 

@@ -1,7 +1,6 @@
 import React from 'react';
 import {Image} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import BadgesStack from './BadgesStack';
 import Colors from '../../res/Colors';
 import FavoritesStack from '../Favorites/FavoritesStack';

@@ -72,11 +72,11 @@ class Profile extends React.Component {
                 <View style={styles.badge}>
                     <Image
                         style={styles.header}
-                        source={{ uri: `${user.profile.hero_badge}` }}
+                        source={{ uri: `${user.profile.header_img_url}` }}
                     />
                     <Image
                         style={styles.profileImage}
-                        source={{ uri: `${user.profile.profile_pic}` }}
+                        source={{ uri: `${user.profile.profile_picture_url}` }}
                     />
                     <TouchableOpacity
                         style={styles.profileEdit}
