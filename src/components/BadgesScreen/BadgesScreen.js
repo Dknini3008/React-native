@@ -5,13 +5,14 @@ import {
     StyleSheet,
     FlatList,
     StatusBar,
-    Text,
     Alert,
 } from 'react-native';
 import BadgesItem from './BadgesItem';
 import BadgesSearch from './BadgesSearch';
 import Colors from '../../res/Colors';
 import Http from '../../libs/http';
+import Loader from '../Generics/Loader';
+import Storage from '../../libs/storage';
 
 class BadgesScreen extends React.Component {
     state = {
@@ -74,6 +75,7 @@ class BadgesScreen extends React.Component {
     };
 
     handleDelete = item => {
+        console.log(item);
         Alert.alert(
             'DELETE PROFILE',
             `Do you really want to delete the ${item.name} 's profile?\n\nYou can't recover the information.`,
@@ -85,8 +87,10 @@ class BadgesScreen extends React.Component {
                 {
                     text: 'Delete',
                     onPress: async () => {
-                        this.setState({ loading: true, badges: undefined });
+                        this.setState({loading: true, badges: undefined });
                         await Http.instance.remove(item._id);
+                        let key = `favorite-${item._id}`;
+                        await Storage.instance.remove(key);
                         this.fetchdata();
                     },
                     style: 'destructive',
@@ -107,15 +111,9 @@ class BadgesScreen extends React.Component {
 
         const { badges, loading } = this.state;
 
-        if (loading == true && !badges) {
-            return (
-                <View style={[styles.container, styles.horizontal]}>
-                    <ActivityIndicator
-                        style={styles.loader}
-                        color="#FF5733"
-                        size="large"
-                    />
-                </View>
+        if (loading === true && !badges){
+            return(
+                <Loader />
             );
         }
         return (

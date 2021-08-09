@@ -1,23 +1,21 @@
 import React from 'react';
-import {
-    Image
-} from 'react-native';
-import {
-    createBottomTabNavigator
-} from '@react-navigation/bottom-tabs';
-import { 
-    createMaterialTopTabNavigator 
-} from '@react-navigation/material-top-tabs';
+import {Image} from 'react-native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import BadgesStack from './BadgesStack';
 import Colors from '../../res/Colors';
+import FavoritesStack from '../Favorites/FavoritesStack';
+import UserStack from '../UserScreen/UserStack';
 
-const Tabs = createMaterialTopTabNavigator();
+const Tabs = createBottomTabNavigator();
 
+//this is the tab that we are going to see to navigate behind all the views
 const BadgesTabNavigator = () => {
     return(
         <Tabs.Navigator
             tabBarOptions = {{
                 showLabel: false,
+                showIcon: true,
                 tintColor: Colors.white,
                 activeTintColor: Colors.white,
                 style: {
@@ -26,25 +24,13 @@ const BadgesTabNavigator = () => {
             }}
         >
             <Tabs.Screen
-                name = "Badges2"
-                component = {BadgesStack}
+                name = "Favorites"
+                component = {FavoritesStack}
                 options = {{
                     tabBarIcon: ({size, color}) => (
                         <Image
                             style = {{tintColor: color, width: size, height: size}} 
-                            source = {require('../../assets/home.png')}
-                        />
-                    ),
-                }}
-            />
-            <Tabs.Screen
-                name = "Badges3"
-                component = {BadgesStack}
-                options = {{
-                    tabBarIcon: ({size, color}) => (
-                        <Image
-                            style = {{tintColor: color, width: size, height: size}} 
-                            source = {require('../../assets/edit_icon.png')}
+                            source = {require('../../assets/notFavorite.png')}
                         />
                     ),
                 }}
@@ -56,7 +42,19 @@ const BadgesTabNavigator = () => {
                     tabBarIcon: ({size, color}) => (
                         <Image
                             style = {{tintColor: color, width: size, height: size}} 
-                            source = {require('../../assets/delete_icon.png')}
+                            source = {require('../../assets/home.png')}
+                        />
+                    ),
+                }}
+            />
+            <Tabs.Screen 
+                name="Profile"
+                component={UserStack}
+                options={{
+                    tabBarIcon: ({size, color}) => (
+                        <Image 
+                            style={{tintColor: color, width: size, height: size }}
+                            source={require('../../assets/profile.png')} 
                         />
                     ),
                 }}

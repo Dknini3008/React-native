@@ -6,6 +6,7 @@ import {
 } from 'react-native';
 import Colors from '../../res/Colors';
 
+//file for the search part
 class BadgesSearch extends React.Component {
     state = {
         query: '',

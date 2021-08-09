@@ -1,44 +1,44 @@
-const BASE_URL = 'https://dk-api-badges-example.herokuapp.com';
+import URLS from './url';
 
 class Http {
     static instance = new Http();
 
     get_all = async () => {
         try {
-            let request = await fetch( `${BASE_URL}/all/`);
+            let request = await fetch(`${URLS.badges_url}/all/`);
             let response = await request.json();
             return response;
-        }catch(err){
+        } catch (err) {
             console.log('http get method error', err);
             throw Error(err);
         }
     };
     get = async badgeId => {
         try {
-            let request = await fetch( `${BASE_URL}/_id:${badgeId}/`);
+            let request = await fetch(`${URLS.badges_url}/_id:${badgeId}/`);
             let response = await request.json();
             return response;
-        }catch(err){
+        } catch (err) {
             console.log('http get method error', err);
             throw Error(err);
         }
     };
     post = async badge => {
         try {
-            let request = await fetch( `${BASE_URL}/new/`, {
+            let request = await fetch(`${URLS.badges_url}/new/`, {
                 method: 'POST',
                 body: JSON.stringify(badge),
             });
             let response = await request.json();
             return response;
-        }catch(err){
+        } catch (err) {
             console.log('http post method error', err);
             throw Error(err);
         }
     };
     put = async (badgeId, body) => {
         try {
-            let request = await fetch( `${BASE_URL}/_id:${badgeId}/`, {
+            let request = await fetch(`${URLS.badges_url}/_id:${badgeId}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -48,19 +48,19 @@ class Http {
             });
             let response = await request.json();
             return response;
-        }catch(err){
+        } catch (err) {
             console.log('http put method error', err);
             throw Error(err);
         }
     };
     remove = async badgeId => {
         try {
-            let request = await fetch( `${BASE_URL}/_id:${badgeId}/`, {
+            let request = await fetch(`${URLS.badges_url}/_id:${badgeId}/`, {
                 method: 'DELETE',
             });
             let response = await request.json();
             return response;
-        }catch(err){
+        } catch (err) {
             console.log('http delete method error', err);
             throw Error(err);
         }

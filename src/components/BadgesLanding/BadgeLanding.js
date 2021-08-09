@@ -15,6 +15,7 @@ const imageBackground = {
 
 class BadgeLanding extends React.Component {
 
+    //handle press to go to the tab navigator
     handlePress = () => {
         this.props.navigation.replace('BadgesTabNavigator');
     };
